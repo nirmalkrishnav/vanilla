@@ -6,7 +6,8 @@ class Answer extends React.Component {
         options: [],
         answer: null,
         hearts: 0,
-        answered: false
+        answered: false,
+        correctAnswer: false
 
     }
 
@@ -34,7 +35,8 @@ class Answer extends React.Component {
         this.setState({
             answer: this.props.answer,
             options: this.getOption(),
-            answered: false
+            answered: false,
+            correctAnswer: false
         })
     }
 
@@ -57,11 +59,15 @@ class Answer extends React.Component {
             localStorage.setItem('hearts', this.state.hearts + 1);
             this.setState({
                 hearts: this.state.hearts + 1,
-                answered: true
+                answered: true,
+                correctAnswer: true
             })
 
         } else {
-            alert('Try again');
+            this.setState({
+                answered: true,
+                correctAnswer: false
+            })
         }
     }
 
@@ -69,19 +75,50 @@ class Answer extends React.Component {
         this.props.onCorrectAnswer(true);
     }
 
+    tryAgain = () => {
+        this.setState({
+            answered: false,
+            correctAnswer: false
+        })
+    }
+
     render() {
         // const { openSnackbar, closeSnackbar } = this.props
 
         return (<div>
-
-            {this.state.options.map((item, id) => {
+            {!this.state.answered ? this.state.options.map((item, id) => {
                 return <div className="optionButton" key={id}>
                     <button disabled={this.state.answered} value={item} className="ui basic button" onClick={(e) => this.answerCheck(e)}>
                         {item}
                     </button>
                 </div>
-            })
+            }) : null}
+
+
+            {this.state.answered && this.state.correctAnswer ?
+                <div>
+                    <div className="newHeart">
+                        <em>Well done!</em>
+                        <span role="img" aria-label="heart">💓 + 1</span>
+                        <button className="ui green button" onClick={() => this.nextQuestion()}>Next</button>
+                    </div>
+                </div> : null
             }
+
+            {this.state.answered && !this.state.correctAnswer ?
+                <div>
+                    <div className="newHeart">
+                        <em>"No problem buddy, keep learning!"</em>
+                        <span  role="img" aria-label="panda">🐼🙂</span>
+                        <button className="ui grey button" onClick={() => this.tryAgain()}>Try again</button>
+                    </div>
+                </div> : null
+            }
+
+
+
+
+
 
             <div className="control-row">
                 <div className="ui labeled button">
@@ -92,7 +129,6 @@ class Answer extends React.Component {
                         {this.state.hearts}
                     </span >
                 </div>
-                {this.state.answered ? <button className="ui green button" onClick={() => this.nextQuestion()}>Continue</button> : null}
             </div>
 
         </div >)

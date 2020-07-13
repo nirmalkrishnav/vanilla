@@ -22,3 +22,7 @@
   width: 100%;  
   font-size: 2em !important;
 }
+.control-row{
+  display:flex;
+  justify-content: space-between;
+}

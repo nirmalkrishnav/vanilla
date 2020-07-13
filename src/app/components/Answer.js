@@ -1,21 +1,24 @@
 import React from 'react';
+import { withSnackbar } from 'react-simple-snackbar'
 
 class Answer extends React.Component {
     state = {
         options: [],
-        answer: null
+        answer: null,
+        hearts: 0,
+        answered: false
+
     }
+
     // https://bost.ocks.org/mike/shuffle/
     shuffleOptions = (optionsArr) => {
         var m = optionsArr.length, t, i;
         while (m) {
             i = Math.floor(Math.random() * m--);
-            console.log(i);
             t = optionsArr[m];
             optionsArr[m] = optionsArr[i];
             optionsArr[i] = t;
         }
-        console.log(optionsArr)
         return optionsArr;
     }
 
@@ -34,6 +37,14 @@ class Answer extends React.Component {
         })
     }
 
+    componentDidMount = () => {
+        const hz = +localStorage.getItem('hearts');
+        this.setState({
+            hearts: hz + 0,
+            answered: false
+        })
+
+    }
 
     componentDidUpdate = (prevProps) => {
         if (prevProps.answer !== this.props.answer) {
@@ -43,17 +54,25 @@ class Answer extends React.Component {
 
     answerCheck = (e) => {
         if (+e.target.value === this.props.answer) {
-            alert('Correct Answer');
-            this.props.onCorrectAnswer(true);
+            this.setState({
+                hearts: this.state.hearts + 1,
+                answered: true
+            })
+            localStorage.setItem('hearts', this.state.hearts);
+
         } else {
             alert('Try again');
         }
     }
 
+    nextQuestion = () => {
+        this.props.onCorrectAnswer(true);
+    }
+
     render() {
+        // const { openSnackbar, closeSnackbar } = this.props
 
         return (<div>
-            {this.props.answer}<br />
 
             {this.state.options.map((item, id) => {
                 return <div className="optionButton" key={id}>
@@ -61,9 +80,23 @@ class Answer extends React.Component {
                         {item}
                     </button>
                 </div>
-            })}
-        </div>)
+            })
+            }
+
+            <div className="control-row">
+                <div className="ui labeled button">
+                    <div className="ui red button">
+                        <i className="heart icon"></i>
+                    </div>
+                    <span className="ui basic red left pointing label">
+                        {this.state.hearts}
+                    </span >
+                </div>
+                {this.state.answered ? <button className="ui green button" onClick={() => this.nextQuestion}>Continue</button> : null}
+            </div>
+
+        </div >)
     }
 }
 
-export default Answer;
+export default withSnackbar(Answer)

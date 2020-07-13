@@ -1,5 +1,6 @@
 import React from 'react';
 import Answer from './Answer';
+import SnackbarProvider from 'react-simple-snackbar'
 
 class Quiz extends React.Component {
     state = {
@@ -28,12 +29,14 @@ class Quiz extends React.Component {
     render() {
         return (
             <div>
-                What is
+                <h4>Hi, Select correct answer and collect hearts <span>💓 😄</span></h4>
                 <h1 className="numbers">{this.state.num1}</h1>
                 <div className="operation">+</div>
                 <h1 className="numbers"> {this.state.num2}</h1>
                 <hr />
-                <Answer answer={this.state.ans} onCorrectAnswer={this.populateNumbers} />
+                <SnackbarProvider>
+                    <Answer answer={this.state.ans} onCorrectAnswer={this.populateNumbers} />
+                </SnackbarProvider>
             </div>
         )
     }

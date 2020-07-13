@@ -33,7 +33,8 @@ class Answer extends React.Component {
     updateAndNotify = () => {
         this.setState({
             answer: this.props.answer,
-            options: this.getOption()
+            options: this.getOption(),
+            answered: false
         })
     }
 
@@ -41,7 +42,6 @@ class Answer extends React.Component {
         const hz = +localStorage.getItem('hearts');
         this.setState({
             hearts: hz + 0,
-            answered: false
         })
 
     }
@@ -54,11 +54,11 @@ class Answer extends React.Component {
 
     answerCheck = (e) => {
         if (+e.target.value === this.props.answer) {
+            localStorage.setItem('hearts', this.state.hearts + 1);
             this.setState({
                 hearts: this.state.hearts + 1,
                 answered: true
             })
-            localStorage.setItem('hearts', this.state.hearts);
 
         } else {
             alert('Try again');
@@ -76,7 +76,7 @@ class Answer extends React.Component {
 
             {this.state.options.map((item, id) => {
                 return <div className="optionButton" key={id}>
-                    <button value={item} className="ui basic button" onClick={(e) => this.answerCheck(e)}>
+                    <button disabled={this.state.answered} value={item} className="ui basic button" onClick={(e) => this.answerCheck(e)}>
                         {item}
                     </button>
                 </div>
@@ -92,7 +92,7 @@ class Answer extends React.Component {
                         {this.state.hearts}
                     </span >
                 </div>
-                {this.state.answered ? <button className="ui green button" onClick={() => this.nextQuestion}>Continue</button> : null}
+                {this.state.answered ? <button className="ui green button" onClick={() => this.nextQuestion()}>Continue</button> : null}
             </div>
 
         </div >)

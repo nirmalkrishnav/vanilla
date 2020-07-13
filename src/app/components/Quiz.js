@@ -33,7 +33,7 @@ class Quiz extends React.Component {
                 <div className="operation">+</div>
                 <h1 className="numbers"> {this.state.num2}</h1>
                 <hr />
-                <Answer answer={this.state.ans} />
+                <Answer answer={this.state.ans} onCorrectAnswer={this.populateNumbers} />
             </div>
         )
     }

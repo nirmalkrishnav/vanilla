@@ -44,6 +44,7 @@ class Answer extends React.Component {
     answerCheck = (e) => {
         if (+e.target.value === this.props.answer) {
             alert('Correct Answer');
+            this.props.onCorrectAnswer(true);
         } else {
             alert('Try again');
         }

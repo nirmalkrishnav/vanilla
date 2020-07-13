@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Quiz from './app/components/Quiz';
 
-function App() {
-  return (
-    <div className="App">
-      Hi
-    </div>
-  );
+class App extends React.Component {
+
+  render() {
+    return (
+      <div className="App">
+        <Quiz />
+      </div>
+    );
+  }
 }
 
 export default App;

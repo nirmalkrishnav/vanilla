@@ -6,11 +6,10 @@ class Header extends React.Component {
 
         return (
             <nav>
-                <h3>Vanilla</h3>
-                <ul>
-                    <li>Courses</li>
-                    <li>About</li>
-                </ul>
+                <h2>
+                    <span role="img" aria-label="vanilla">🍦</span>
+                    Vanilla <span role="img" aria-label="heart">💓</span>
+                </h2>
             </nav>
         )
     }

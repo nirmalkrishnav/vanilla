@@ -27,7 +27,7 @@
   justify-content: space-between;
 }
 .newHeart{
-  height: 60vh;
+  height: 55vh;
     text-align: center;
     display: flex;
     justify-content: space-around;
@@ -38,4 +38,15 @@
 }
 .newHeart em{
   line-height: 33px;
+}
+
+nav{
+  text-align: center;
+    color: #076ec7;
+}
+
+.desc{
+  text-align: center;
+    margin: 1.2em;
+    color: #00806e;
 }

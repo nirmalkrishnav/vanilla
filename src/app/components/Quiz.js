@@ -29,7 +29,8 @@ class Quiz extends React.Component {
     render() {
         return (
             <div>
-                <h4>One heart for one right Answer <span  role="img" aria-label="heart smile">💓 😄</span></h4>
+                <h4 className="desc">One heart for every correct Answer buddy <span role="img" aria-label="smile"> 😄</span></h4>
+                <hr/>
                 <h1 className="numbers">{this.state.num1}</h1>
                 <div className="operation">+</div>
                 <h1 className="numbers"> {this.state.num2}</h1>

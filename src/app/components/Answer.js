@@ -24,8 +24,8 @@ class Answer extends React.Component {
     }
 
     getOption = () => {
-        const op1 = this.props.answer + Math.ceil(Math.random() * 10);
-        const op2 = this.props.answer - Math.ceil(Math.random() * 10);
+        const op1 = this.props.answer + Math.ceil(Math.random() * 1000);
+        const op2 = this.props.answer - Math.ceil(Math.random() * 1000);
         console.log([this.props.answer, op1, op2]);
         return this.shuffleOptions([this.props.answer, op1, op2]);
 

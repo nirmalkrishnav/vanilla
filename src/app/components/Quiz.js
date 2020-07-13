@@ -10,8 +10,8 @@ class Quiz extends React.Component {
     };
 
     populateNumbers = () => {
-        const n1 = Math.ceil(Math.random() * 10);
-        const n2 = Math.ceil(Math.random() * 10);
+        const n1 = Math.ceil(Math.random() * 1000);
+        const n2 = Math.ceil(Math.random() * 1000);
         this.setState({
             num1: n1,
             num2: n2

@@ -42,7 +42,11 @@ class Answer extends React.Component {
     }
 
     answerCheck = (e) => {
-console.log(e.target.value)
+        if (+e.target.value === this.props.answer) {
+            alert('Correct Answer');
+        } else {
+            alert('Try again');
+        }
     }
 
     render() {

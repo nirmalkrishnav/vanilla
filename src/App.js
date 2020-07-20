@@ -3,9 +3,8 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
 import Quiz from './app/components/Quiz';
-import Header from './app/layouts/Header';
+import { Header, Tabs } from './app/layouts';
 import About from './app/components/about';
-
 
 
 class App extends React.Component {
@@ -14,8 +13,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Route component={Quiz} exact path="/" />
-        <Route component={About} exact path="/about" />
+        <Switch>
+          <Route component={About} path="/about" />
+          <Route component={Quiz} path="/home" />
+          <Route component={Quiz} path="/" />
+        </Switch>
+        <Tabs />
       </div>
     );
   }

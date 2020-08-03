@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillCalculator, AiFillCrown, AiFillFire, AiOutlineMore } from 'react-icons/ai';
-import { GiDiamonds } from 'react-icons/GiDiamonds';
+import { BsFillDiamondFill } from 'react-icons/bs';
 import { IconContext } from "react-icons";
 
 
@@ -33,7 +33,7 @@ class Navbar extends React.Component {
                 <div>
                     <IconContext.Provider value={{ color: "black", size: "32px" }}>
                         <div>
-                            <GiDiamonds />
+                            <BsFillDiamondFill />
                         </div>
                     </IconContext.Provider>
                 </div>

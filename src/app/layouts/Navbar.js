@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { AiFillGithub, AiFillCalculator, AiFillCrown, AiFillFire, AiOutlineMore } from 'react-icons/ai';
 import { IconContext } from "react-icons";
 import './layout.scss';

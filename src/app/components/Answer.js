@@ -1,5 +1,4 @@
 import React from 'react';
-import { withSnackbar } from 'react-simple-snackbar'
 
 class Answer extends React.Component {
     state = {
@@ -71,6 +70,8 @@ class Answer extends React.Component {
         }
     }
 
+    
+
     nextQuestion = () => {
         this.props.onCorrectAnswer(true);
     }
@@ -135,4 +136,4 @@ class Answer extends React.Component {
     }
 }
 
-export default withSnackbar(Answer)
+export default Answer

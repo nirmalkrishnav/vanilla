@@ -1,7 +1,5 @@
 import React from 'react';
 import './layout.scss';
-import { FaBeer } from 'react-icons/fa';
-import { IconContext } from "react-icons";
 import { Link } from 'react-router-dom';
 
 class Tabs extends React.Component {
@@ -15,11 +13,7 @@ class Tabs extends React.Component {
                     Stories
                 </div>
                 <div className="tab-item">
-                    {/* <IconContext.Provider value={{ color: "sandybrown" }}>
-                        <div>
-                            <FaBeer />
-                        </div>
-                    </IconContext.Provider> */}
+                  
                     <Link to="/about">About</Link>
 
                 </div>

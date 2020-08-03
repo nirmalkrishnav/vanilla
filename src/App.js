@@ -13,7 +13,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App bg-white">
         <Header />
         <Switch>
           <Route component={About} path="/about" />

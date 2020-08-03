@@ -1,15 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AiFillCalculator, AiFillCrown, AiFillFire, AiOutlineMore } from 'react-icons/ai';
+import { GiDiamonds } from 'react-icons/GiDiamonds';
+import { IconContext } from "react-icons";
+
 
 class Navbar extends React.Component {
     render() {
         return (
-            <div className="top-tabs">
+            <div className="flex flex-row content-start justify-around items-center px-3">
                 <div>
-                    <Link to="/home">Home</Link>
+                    <IconContext.Provider value={{ color: "black", size: "32px" }}>
+                        <div>
+                            <AiFillCalculator />
+                        </div>
+                    </IconContext.Provider>
                 </div>
                 <div>
-                    <Link to="/about">About</Link>
+                    <IconContext.Provider value={{ color: "black", size: "32px" }}>
+                        <div>
+                            <AiFillCrown />
+                        </div>
+                    </IconContext.Provider>
+                </div>
+                <div>
+                    <IconContext.Provider value={{ color: "black", size: "32px" }}>
+                        <div>
+                            <AiFillFire />
+                        </div>
+                    </IconContext.Provider>
+                </div>
+                <div>
+                    <IconContext.Provider value={{ color: "black", size: "32px" }}>
+                        <div>
+                            <GiDiamonds />
+                        </div>
+                    </IconContext.Provider>
+                </div>
+                <div>
+                    <IconContext.Provider value={{ color: "black", size: "32px" }}>
+                        <div>
+                            <AiOutlineMore />
+                        </div>
+                    </IconContext.Provider>
                 </div>
             </div>
         )
